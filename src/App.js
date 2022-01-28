@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import InputPanel from './Components/InputPanel';
 import OutputPanel from './Components/OutputPanel';
 import Box from '@mui/material/Box';
@@ -24,8 +24,8 @@ import { ThemeProvider } from '@mui/material';
 
 function App(props) {
 
-  const matches = useMediaQuery('(min-width:500px)')
-  const drawerWidth = matches? 500 : 400
+  const matches = useMediaQuery('(min-width:600px)')
+  const drawerWidth = matches? 500 : 350
 
   const {window} = props
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -62,6 +62,10 @@ function App(props) {
   }
 
   const drawer = (
+
+    
+
+
     <InputPanel 
       handleSetScenarios={handleSetScenarios}
       duration={duration}
@@ -77,6 +81,10 @@ function App(props) {
 
   const container = window !== undefined ? () =>window().document.body : undefined
 
+  // const ref = useRef(null)
+  // useEffect(() => {
+  //   console.log('width', ref.current ? ref.current.offsetWidth : 0);
+  // }, [ref.current]);
 
   return (
     <ThemeProvider theme={CustomTheme}>
@@ -143,6 +151,7 @@ function App(props) {
       >
         <Toolbar />
         <OutputPanel 
+          // ref={ref}
           initialDepth = {scenarios? scenarios[0].depth : ''} 
           initialRatio = {scenarios? scenarios[0].loadingRatio : ''} 
           surface={scenarios? scenarios[0].surface : ''} 

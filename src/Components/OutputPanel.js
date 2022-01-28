@@ -261,6 +261,7 @@ const OutputPanel = ({initialDepth, initialRatio, surface, scenarios, handleSetF
                     : ''
                 }
             </Grid>
+    
         </Grid>
         <br />
         <Box sx={{ width: '100%' }}>
@@ -273,7 +274,8 @@ const OutputPanel = ({initialDepth, initialRatio, surface, scenarios, handleSetF
             </Tabs>
           </Box>
           <TabPanel value={value} index={0}>
-            1, test Select your site condition on the left input panel
+            {matches ? '1, ' : '1, Click the menu on the left-top corner '}
+            Select your site condition on the left input panel
             <br />
             2, Click <Button variant="contained" size="small">GENERATE</Button>  button in the left input panel to get the recommended GSI prototype on the right output panel. 
             (This protype is the one with lowest cost and fits your site conditions )
