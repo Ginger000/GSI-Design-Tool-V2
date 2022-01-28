@@ -183,7 +183,7 @@ const OutputPanel = ({initialDepth, initialRatio, surface, scenarios, handleSetF
                     {/* <axesHelper args={[10]} /> */}
                     <group position={[0, 0, 3]}>
                         <GSIdepth position={[0,1.5,-6.01]} args={[4.001,2.501,6.005]} GSIRatio={loadingRatio} depth={depthUnit[depth]} color='yellow' prevGSIRatios={prevLoadingRatios}/>
-                        <GSIplantedSurface position={[0,1.65,-6]} args={[4.002,0.3,6.01]} GSIRatio={loadingRatio} color='green' prevGSIRatios={prevLoadingRatios} />
+                        <GSIplantedSurface position={[0,1.65,-6]} args={[4.002,0.3,6.01]} GSIRatio={loadingRatio} color={surfaceType === "planted" ? 'green': "lightblue"} prevGSIRatios={prevLoadingRatios} />
                         <GSIbaseSurface position={[0,1.65,0]} GSIratio={loadingRatio} args={[4.01,0.31,6.01]} color='lightgrey'  />
                         <GSIbase position={[0,0,0]} args={[4,3,6]} color='pink' />
                     </group>
@@ -287,11 +287,13 @@ const OutputPanel = ({initialDepth, initialRatio, surface, scenarios, handleSetF
             <br />
             5, The 3d geometric visualiation sould help out intuitively understand the changes and relations among site, soil, and surface. The animations shows how the impemeable hard pavement is supposed to be depaved first and then the GSI is add.
             <br />
-            6, Go to the THEORY tab to learn about the scientific research behind this tool
+            6, And you and zoom in/out or rotate the geometry by your mouse. Press mouse left button to rotate, press mouse right button to move.
             <br />
-            7, Go to the CONSOLE tab to take a look at the lab experiment data that fits your current input site conditions and fits your generated GSI prototype
+            7, Go to the THEORY tab to learn about the scientific research behind this tool
             <br />
-            8, You could skip playing with the generated prototypes, and get all sorted GSI prototypes that fits your input immediately.
+            8, Go to the CONSOLE tab to take a look at the lab experiment data that fits your current input site conditions and fits your generated GSI prototype
+            <br />
+            9, You could skip playing with the generated prototypes, and get all sorted GSI prototypes that fits your input immediately.
           </TabPanel>
           <TabPanel value={value} index={1}>
             1, What is reliability curve?
