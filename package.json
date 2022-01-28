@@ -1,6 +1,7 @@
 {
   "name": "gsi-design-tool-v1",
   "version": "0.1.0",
+  "homepage": "https://ginger000.github.io/GSI-Design-Tool-V1",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.7.1",
@@ -21,6 +22,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -43,5 +46,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^3.2.3"
   }
 }
