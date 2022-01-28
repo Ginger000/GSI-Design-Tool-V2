@@ -35,7 +35,10 @@ const InputPanel = ({handleSetScenarios, duration ,setDuration, soilType, setSoi
         setSurfaceError(false);
     } 
     const [designStorm, setDesignStorm] = useState(null)
-    const changeDesignStorm = e => setDesignStorm(e.target.value)
+    const changeDesignStorm = e => {
+      setDesignStorm(e.target.value)
+      setStormError(false);
+    } 
     const valuetext = (designStorm) => {
         return `${designStorm} inches`
     }
@@ -49,13 +52,15 @@ const InputPanel = ({handleSetScenarios, duration ,setDuration, soilType, setSoi
     const [durationError, setDurationError] = useState(false);
     const [soilError, setSoilError] = useState(false);
     const [surfaceError, setSurfaceError] = useState(false);
+    const [stormError, setStormError] = useState(false);
+    
 
     
 
 
   const generateScenarios = (event) => {
     event.preventDefault();
-    if(duration && soilType && surfaceType) {
+    if(duration && soilType && surfaceType && designStorm) {
       handleSetScenarios(()=>{
           const result = DATA.filter(d=>{
             return d["designStorm"] === designStorm 
@@ -86,36 +91,44 @@ const InputPanel = ({handleSetScenarios, duration ,setDuration, soilType, setSoi
         setSurfaceHelperText('Please select the surface type .');
         setSurfaceError(true);
       }
+      if(!designStorm){
+        setStormError(true)
+      }
     }  
   }
     return (
       <Box sx={{ display:"flex", mt: 6, justifyContent: 'center' }}>
         <form onSubmit={generateScenarios} >
         <Stack spacing={2} >
-            <Box sx={{ width: 300, ml:1 }}>
-                <Typography gutterBottom>Design Storm (inches)</Typography> 
-                {stormRecommend && feedbackScenarios ? 
-                    <Alert variant="outlined" severity="info" > 
-                        You could adjust the design storm within the range {" "}
-                        {feedbackScenarios[feedbackScenarios.length-1]["designStorm"]} inches to {" "}
-                        {feedbackScenarios[0]["designStorm"]} inches 
-                    </Alert> :
-                    ""
-                }
-                <Slider
-                    aria-label="Design Storm"
-                    defaultValue={0.1}
-                    getAriaValueText={valuetext}
-                    valueLabelDisplay="auto"
-                    step={0.1}
-                    marks = {marks}
-                    min={0.1}
-                    max={5}
-                    onChange={changeDesignStorm}
-                    value = {designStorm}
-                />
-            </Box>
-            
+          <FormControl  component="fieldset">
+              <Box sx={{ width: 300, ml:1 }}>
+                  <Typography gutterBottom>Design Storm (inches)</Typography> 
+                  {stormRecommend && feedbackScenarios ? 
+                      <Alert variant="outlined" severity="info" > 
+                          You could adjust the design storm within the range {" "}
+                          {feedbackScenarios[feedbackScenarios.length-1]["designStorm"]} inches to {" "}
+                          {feedbackScenarios[0]["designStorm"]} inches 
+                      </Alert> :
+                      ""
+                  }
+                  {stormError ? 
+                  <Alert variant="outlined" severity="error">
+                    Please select the design storm.
+                  </Alert> : '' }
+                  <Slider
+                      aria-label="Design Storm"
+                      defaultValue={0.1}
+                      getAriaValueText={valuetext}
+                      valueLabelDisplay="auto"
+                      step={0.1}
+                      marks = {marks}
+                      min={0.1}
+                      max={5}
+                      onChange={changeDesignStorm}
+                      value = {designStorm}
+                  />
+              </Box>
+            </FormControl>
             <FormControl  component="fieldset">
                 <FormLabel component="legend">Reduction Amount</FormLabel>
    
