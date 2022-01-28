@@ -273,7 +273,7 @@ const OutputPanel = ({initialDepth, initialRatio, surface, scenarios, handleSetF
             </Tabs>
           </Box>
           <TabPanel value={value} index={0}>
-            1, Select your site condition on the left input panel
+            1, test Select your site condition on the left input panel
             <br />
             2, Click <Button variant="contained" size="small">GENERATE</Button>  button in the left input panel to get the recommended GSI prototype on the right output panel. 
             (This protype is the one with lowest cost and fits your site conditions )
