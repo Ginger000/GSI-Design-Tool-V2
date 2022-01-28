@@ -15,14 +15,17 @@ import { DataGrid } from "@mui/x-data-grid";
 import Radio from "@mui/material/Radio";
 import Grid from '@mui/material/Grid';
 import Test from './Components/Test';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
+import CustomTheme from './Assets/CustomTheme';
+import { ThemeProvider } from '@mui/material';
 
 
-
-const drawerWidth = 500
 
 function App(props) {
 
-  
+  const matches = useMediaQuery('(min-width:500px)')
+  const drawerWidth = matches? 500 : 400
 
   const {window} = props
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -76,6 +79,7 @@ function App(props) {
 
 
   return (
+    <ThemeProvider theme={CustomTheme}>
     <Box sx={{display:'flex'}} >
       <CssBaseline />
       <AppBar
@@ -155,6 +159,7 @@ function App(props) {
         
       </Box>
     </Box>
+    </ThemeProvider>
   );
 }
 
