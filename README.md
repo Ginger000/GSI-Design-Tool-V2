@@ -1,6 +1,6 @@
 # GSI Design Tool
 
-[Click to the deployment]([https://www.gingerland.io/](https://ginger000.github.io/GSI-Design-Tool-V1/))
+[Click to the deployment](https://www.gingerland.io/](https://ginger000.github.io/GSI-Design-Tool-V1/)
 
 ##### An interactive GSI (Green Strom Water Infrastructure) design and visulization tool that enable stormwater managers input site condition and and get GSI recommendation. Collobarate with civil engineer, landscape architect, scientists and community out-reach team.
 
