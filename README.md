@@ -1,74 +1,29 @@
-# Getting Started with Create React App
+# GSI Design Tool
 
 
-https://user-images.githubusercontent.com/40289438/172739006-3196cc16-3cdf-4403-9ab9-e05a3e3cb7c8.mp4
+
+##### An interactive GSI (Green Strom Water Infrastructure) design and visulization tool that enable stormwater managers input site condition and and get GSI recommendation. Collobarate with civil engineer, landscape architect, scientists and community out-reach team.
+
+#### Tech Stack: React, Threejs, MaterialUI
+
+#### Features: 
+- Users can input the paramers of your site condition and get the corresponding GSI recommendation.
+- Users can customize and test their own GSI design
+- Error notification for inappropriate GSI design
+- Console would shows all valid GSI design for users input
+- Output would be visualized on the 3D model
 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+https://user-images.githubusercontent.com/40289438/172740337-97e2c551-3516-46d3-93d0-4c6d53c67816.mp4
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
+#### Credits:
+- The whole project credit to WATER LAB - At University of Illinois at Urbana-Champaign
+- Web design and development credit to Ginger Lin Jiang
+- Green Storm Water experiment research credit to Dr.Reshmina William
+- Project manager credit to Mary Pat McGuire
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
