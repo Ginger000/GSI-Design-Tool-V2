@@ -8,6 +8,8 @@ const ScenarioDataGrid = ({
     scenarios,
     depth,
     loadingRatio,
+    setDepth,
+    setLoadingRatio,
     changeTogether,
 }) => {
     const rows = scenarios;
@@ -73,6 +75,8 @@ const ScenarioDataGrid = ({
         // if(selectedRow.length){
         //   changeTogether(selectedRow[0].loadingRatio, selectedRow[0].depth)
         // }
+        selectedRow[0] && setDepth(selectedRow[0].depth);
+        selectedRow[0] && setLoadingRatio(selectedRow[0].loadingRatio);
 
         console.log('selectedRow', selectedRow);
     }

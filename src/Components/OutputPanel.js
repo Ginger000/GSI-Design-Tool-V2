@@ -479,6 +479,8 @@ const OutputPanel = ({
                             scenarios={scenarios}
                             depth={depth}
                             loadingRatio={loadingRatio}
+                            setDepth={setDepth}
+                            setLoadingRatio={setLoadingRatio}
                             changeTogether={handleChangeTogether}
                         />
                     ) : (
