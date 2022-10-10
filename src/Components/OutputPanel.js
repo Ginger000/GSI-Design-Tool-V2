@@ -465,100 +465,15 @@ const OutputPanel = ({
                         onChange={handleChange}
                         aria-label="basic tabs example"
                     >
-                        <Tab label="Instruction" {...a11yProps(0)} />
-                        <Tab label="Theory" {...a11yProps(1)} />
-                        <Tab label="Console" {...a11yProps(2)} />
-                        <Tab label="Credit" {...a11yProps(3)} />
+                        <Tab label="Output" {...a11yProps(0)} />
                     </Tabs>
                 </Box>
                 <TabPanel value={value} index={0}>
-                    {matches
-                        ? '1, '
-                        : '1, Click the menu on the left-top corner '}
-                    Select your site condition on the left input panel
-                    <br />
-                    2, Click{' '}
-                    <Button variant="contained" size="small">
-                        GENERATE
-                    </Button>{' '}
-                    button in the left input panel to get the recommended GSI
-                    prototype on the right output panel. (This protype is the
-                    one with lowest cost and fits your site conditions )
-                    <br />
-                    3, GSI-loading-ratio options and GSI-depth options would pop
-                    up as the same time your GSI prototype is generated. You're
-                    encouraged to adjust the ratio and depth. This tool would{' '}
-                    <Alert
-                        sx={{ display: 'inline-flex', pt: 0, pb: 0 }}
-                        variant="outlined"
-                        severity="warning"
-                    >
+                    <p style={{ color: 'grey' }}>
                         {' '}
-                        give you warnings{' '}
-                    </Alert>{' '}
-                    if the ratio or depth not fits your site conditions.
-                    <br />
-                    4, Everytime you adjust the ratio or depth, the maximum
-                    design storm you could reach to would also be changed. This
-                    tool would{' '}
-                    <Alert
-                        sx={{ display: 'inline-flex', pt: 0, pb: 0 }}
-                        variant="outlined"
-                        severity="info"
-                    >
-                        {' '}
-                        give you the recommended range of possible design storm
-                    </Alert>
-                    .
-                    <br />
-                    5, The 3d geometric visualiation sould help out intuitively
-                    understand the changes and relations among site, soil, and
-                    surface. The animations shows how the impemeable hard
-                    pavement is supposed to be depaved first and then the GSI is
-                    add.
-                    <br />
-                    6, And you and zoom in/out or rotate the geometry by your
-                    mouse. Press mouse left button to rotate, press mouse right
-                    button to move.
-                    <br />
-                    7, Go to the THEORY tab to learn about the scientific
-                    research behind this tool
-                    <br />
-                    8, Go to the CONSOLE tab to take a look at the lab
-                    experiment data that fits your current input site conditions
-                    and fits your generated GSI prototype
-                    <br />
-                    9, You could skip playing with the generated prototypes, and
-                    get all sorted GSI prototypes that fits your input
-                    immediately.
-                </TabPanel>
-                <TabPanel value={value} index={1}>
-                    1, What is reliability curve?
-                    <br />
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Rhoncus dolor purus non enim praesent elementum
-                    facilisis leo vel. Risus at ultrices mi tempus imperdiet.
-                    Semper risus in hendrerit gravida rutrum quisque non tellus.
-                    Convallis convallis tellus id interdum velit laoreet id
-                    donec ultrices. Odio morbi quis commodo odio aenean sed
-                    adipiscing. Amet nisl suscipit adipiscing bibendum est
-                    ultricies integer quis. Cursus euismod quis viverra nibh
-                    cras. Metus vulputate eu scelerisque felis imperdiet proin
-                    fermentum leo. Mauris commodo quis imperdiet massa
-                    tincidunt. Cras tincidunt lobortis feugiat vivamus at augue.
-                    At augue eget arcu dictum varius duis at consectetur lorem.
-                    Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-                    sapien faucibus et molestie ac.
-                    <br />
-                    <br />
-                    2, How this GSI Design Tool works?
-                    <br />
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod
-                </TabPanel>
-                <TabPanel value={value} index={2}>
+                        * The specified performance standard is a 80% reduction
+                        in stormwater runoff
+                    </p>
                     {scenarios ? (
                         <ScenarioDataGrid
                             scenarios={scenarios}
@@ -577,9 +492,6 @@ const OutputPanel = ({
                         ''
                     )}
                     {/* <ScenarioDataGrid scenarios={scenarios} /> */}
-                </TabPanel>
-                <TabPanel value={value} index={3}>
-                    @ WATER LAB 2022
                 </TabPanel>
             </Box>
         </>
