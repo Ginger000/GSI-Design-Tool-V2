@@ -1,7 +1,7 @@
 {
   "name": "gsi-design-tool-v1",
   "version": "0.1.0",
-  "homepage": "https://ginger000.github.io/GSI-Design-Tool-V1",
+  "homepage": "https://ginger000.github.io/GSI-Design-Tool-V2",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.7.1",
