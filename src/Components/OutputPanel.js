@@ -25,6 +25,7 @@ import ScenarioDataGrid from './ScenarioDataGrid';
 import FeedbackScenariosDataGrid from './FeedbackScenariosDataGrid';
 import Tooltip from '@mui/material/Tooltip';
 import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
+import Legend from './Legend';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -71,6 +72,7 @@ const OutputPanel = ({
     isStormRecommend,
     stormRecommend,
     feedbackScenarios,
+    displayedGraphic,
 }) => {
     const [value, setValue] = useState(0);
 
@@ -187,6 +189,8 @@ const OutputPanel = ({
         <>
             <Grid container spacing={2}>
                 <Grid item height={500} xs={12} md={12} lg={12}>
+                    <Legend displayedGraphic={displayedGraphic} />
+
                     <Canvas colorManagement>
                         <Suspense fallback={null}>
                             <OrthographicCamera
@@ -216,9 +220,10 @@ const OutputPanel = ({
                                     args={[4.002, 0.3, 6.01]}
                                     GSIRatio={loadingRatio}
                                     color={
-                                        surfaceType === 'planted'
+                                        scenarios &&
+                                        scenarios[0].surface === 'planted'
                                             ? 'green'
-                                            : 'lightblue'
+                                            : '#BC4A3C'
                                     }
                                     prevGSIRatios={prevLoadingRatios}
                                 />
@@ -226,7 +231,7 @@ const OutputPanel = ({
                                     position={[0, 1.65, 0]}
                                     GSIratio={loadingRatio}
                                     args={[4.01, 0.31, 6.01]}
-                                    color="lightgrey"
+                                    color="grey"
                                 />
                                 <GSIbase
                                     position={[0, 0, 0]}
@@ -479,8 +484,8 @@ const OutputPanel = ({
                             scenarios={scenarios}
                             depth={depth}
                             loadingRatio={loadingRatio}
-                            setDepth={setDepth}
-                            setLoadingRatio={setLoadingRatio}
+                            // setDepth={setDepth}
+                            // setLoadingRatio={setLoadingRatio}
                             changeTogether={handleChangeTogether}
                         />
                     ) : (

@@ -8,8 +8,8 @@ const ScenarioDataGrid = ({
     scenarios,
     depth,
     loadingRatio,
-    setDepth,
-    setLoadingRatio,
+    // setDepth,
+    // setLoadingRatio,
     changeTogether,
 }) => {
     const rows = scenarios;
@@ -20,12 +20,12 @@ const ScenarioDataGrid = ({
             headerName: '',
             width: 100,
             sortable: false,
-            renderCell: (params) => (
-                <Radio
-                    checked={radioChecked[0] === params.id}
-                    value={params.id}
-                />
-            ),
+            // renderCell: (params) => (
+            //     <Radio
+            //         checked={radioChecked[0] === params.id}
+            //         value={params.id}
+            //     />
+            // ),
         },
         // {
         //   field:"id",
@@ -35,6 +35,7 @@ const ScenarioDataGrid = ({
             field: 'loadingRatio',
             headerName: 'Loading Ratio',
             width: 180,
+            headerClassName: 'super-app-theme--header',
             valueGetter: (params) =>
                 params.value === 2
                     ? (params.value = 'Direct Infiltration')
@@ -42,7 +43,10 @@ const ScenarioDataGrid = ({
         },
         {
             field: 'depth',
+            headerClassName: 'super-app-theme--header',
+
             headerName: 'Depth (inches)',
+            width: 180,
         },
     ];
 
@@ -75,19 +79,25 @@ const ScenarioDataGrid = ({
         // if(selectedRow.length){
         //   changeTogether(selectedRow[0].loadingRatio, selectedRow[0].depth)
         // }
-        selectedRow[0] && setDepth(selectedRow[0].depth);
-        selectedRow[0] && setLoadingRatio(selectedRow[0].loadingRatio);
+        // selectedRow[0] && setDepth(selectedRow[0].depth);
+        // selectedRow[0] && setLoadingRatio(selectedRow[0].loadingRatio);
 
         console.log('selectedRow', selectedRow);
     }
 
     return (
-        <div>
+        <Typography component="div">
             <br />
             <h2 style={{ color: 'grey' }}>Table-1 Scenarios</h2>
 
             <>
                 <DataGrid
+                    sx={{
+                        fontSize: '1.1rem',
+                        '& .super-app-theme--header': {
+                            fontWeight: 700,
+                        },
+                    }}
                     rows={rows}
                     columns={columns}
                     autoHeight
@@ -102,7 +112,7 @@ const ScenarioDataGrid = ({
         
       </div> */}
             </>
-        </div>
+        </Typography>
     );
 };
 
