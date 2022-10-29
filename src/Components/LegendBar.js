@@ -1,10 +1,10 @@
 function LegendBar({ title }) {
     const colorSpecs = {
-        'Existing Site': '#D7B7BD',
-        'Impermeable Hard Pavement': '#858585',
-        'GSI Type - Bioretention': '#008B14',
-        'GSI Type - Permeable Pavement': '#BC4A3C',
-        'GSI Depth': '#ECE957',
+        Subsurface: '#d4a7a4',
+        Surface: '#84879c',
+        'Proposed GSI Type – Bioretention': '#375623',
+        'Proposed GSI Type – Permeable Pavement': '#3c8335',
+        'Proposed GSI Depth': '#ffe07d',
     };
     return (
         <div>

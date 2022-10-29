@@ -188,7 +188,7 @@ const OutputPanel = ({
     return (
         <>
             <Grid container spacing={2}>
-                <Grid item height={500} xs={12} md={12} lg={12}>
+                <Grid item height={350} xs={12} md={12} lg={12}>
                     <Legend displayedGraphic={displayedGraphic} />
 
                     <Canvas colorManagement>
@@ -196,13 +196,13 @@ const OutputPanel = ({
                             <OrthographicCamera
                                 makeDefault
                                 position={[10, 3, -3.5]}
-                                zoom={matches ? 60 : 40}
+                                zoom={matches ? 40 : 30}
                             />
-                            <ambientLight intensity={0.3} />
+                            <ambientLight intensity={0.6} />
                             <directionalLight
                                 position={[-8, 8, -5]}
                                 castShadow
-                                intensity={1}
+                                intensity={0.9}
                                 shadow-camera-far={70}
                             />
                             {/* <axesHelper args={[10]} /> */}
@@ -212,7 +212,7 @@ const OutputPanel = ({
                                     args={[4.001, 2.501, 6.005]}
                                     GSIRatio={loadingRatio}
                                     depth={depthUnit[depth]}
-                                    color="yellow"
+                                    color="#ffe07d"
                                     prevGSIRatios={prevLoadingRatios}
                                 />
                                 <GSIplantedSurface
@@ -222,8 +222,8 @@ const OutputPanel = ({
                                     color={
                                         scenarios &&
                                         scenarios[0].surface === 'planted'
-                                            ? 'green'
-                                            : '#BC4A3C'
+                                            ? '#375623'
+                                            : '#3c8335'
                                     }
                                     prevGSIRatios={prevLoadingRatios}
                                 />
@@ -231,12 +231,12 @@ const OutputPanel = ({
                                     position={[0, 1.65, 0]}
                                     GSIratio={loadingRatio}
                                     args={[4.01, 0.31, 6.01]}
-                                    color="grey"
+                                    color="#84879c"
                                 />
                                 <GSIbase
                                     position={[0, 0, 0]}
                                     args={[4, 3, 6]}
-                                    color="pink"
+                                    color="#d4a7a4"
                                 />
                             </group>
                             <OrbitControls makeDefault />
@@ -244,7 +244,7 @@ const OutputPanel = ({
                     </Canvas>
                 </Grid>
 
-                <Grid item xs={12} md={12} lg={12}>
+                {/* <Grid item xs={12} md={12} lg={12}>
                     {scenarios ? (
                         <Stack>
                             {stormRecommend && feedbackScenarios
@@ -290,7 +290,7 @@ const OutputPanel = ({
                                 <FormLabel component="legend">
                                     Depth (inches)
                                     <Tooltip
-                                        title="Depth is the thickness of the GSI surface design, specified to be either 12, 18, 24 or 30 inches"
+                                        title="The thickness of the GSI surface design, specified to be either 12, 18, 24 or 30 inches"
                                         placement="right"
                                     >
                                         <Button>
@@ -345,7 +345,7 @@ const OutputPanel = ({
                                     <FormLabel component="legend">
                                         Loading Ratio
                                         <Tooltip
-                                            title="The loading ratio is the ratio of the surface runoff area to the green infrastructure area"
+                                            title="The ratio of GSI retrofit area to upstream impervious surface runoff area"
                                             placement="right"
                                         >
                                             <Button>
@@ -460,7 +460,7 @@ const OutputPanel = ({
                     ) : (
                         ''
                     )}
-                </Grid>
+                </Grid> */}
             </Grid>
             <br />
             <Box sx={{ width: '100%' }}>
@@ -479,6 +479,226 @@ const OutputPanel = ({
                         * The specified performance standard is a 80% reduction
                         in stormwater runoff
                     </p>
+                    <Grid item xs={12} md={12} lg={12}>
+                        {scenarios ? (
+                            <Stack>
+                                {stormRecommend && feedbackScenarios
+                                    ? [
+                                          matches ? (
+                                              ''
+                                          ) : (
+                                              <Alert
+                                                  variant="outlined"
+                                                  severity="info"
+                                              >
+                                                  You could adjust the design
+                                                  storm within the range{' '}
+                                                  {
+                                                      feedbackScenarios[
+                                                          feedbackScenarios.length -
+                                                              1
+                                                      ]['designStorm']
+                                                  }{' '}
+                                                  inches to{' '}
+                                                  {
+                                                      feedbackScenarios[0][
+                                                          'designStorm'
+                                                      ]
+                                                  }{' '}
+                                                  inches
+                                              </Alert>
+                                          ),
+                                      ]
+                                    : ''}
+                                <br />
+                                {console.log(
+                                    'depthBound',
+                                    depthBound,
+                                    'ratioBound',
+                                    ratioBound,
+                                    'previousRatio',
+                                    prevLoadingRatios,
+                                    'currentRatio',
+                                    loadingRatio
+                                )}
+                                <FormControl component="fieldset">
+                                    <FormLabel component="legend">
+                                        Depth (inches)
+                                        <Tooltip
+                                            title="The thickness of the GSI surface design, specified to be either 12, 18, 24 or 30 inches"
+                                            placement="right"
+                                        >
+                                            <Button>
+                                                <HelpOutlineOutlinedIcon color="disabled" />
+                                            </Button>
+                                        </Tooltip>
+                                    </FormLabel>
+                                    {depthWarning ? (
+                                        <Alert
+                                            variant="outlined"
+                                            severity="warning"
+                                        >
+                                            The depth cannot be smaller than{' '}
+                                            {depthBound[0]} inches in terms of
+                                            your inputs and current loading
+                                            ratio
+                                        </Alert>
+                                    ) : (
+                                        ''
+                                    )}
+                                    <RadioGroup
+                                        value={depth}
+                                        onChange={changeDepth}
+                                        row
+                                        aria-label="depth"
+                                        name="row-radio-buttons-group"
+                                    >
+                                        <FormControlLabel
+                                            value={12}
+                                            control={<Radio />}
+                                            label="12"
+                                        />
+                                        <FormControlLabel
+                                            value={18}
+                                            control={<Radio />}
+                                            label="18"
+                                        />
+                                        <FormControlLabel
+                                            value={24}
+                                            control={<Radio />}
+                                            label="24"
+                                        />
+                                        <FormControlLabel
+                                            value={30}
+                                            control={<Radio />}
+                                            label="30"
+                                        />
+                                    </RadioGroup>
+                                </FormControl>
+
+                                {surface === 'planted' ? (
+                                    <FormControl component="fieldset">
+                                        <FormLabel component="legend">
+                                            Loading Ratio
+                                            <Tooltip
+                                                title="The ratio of GSI retrofit area to upstream impervious surface runoff area"
+                                                placement="right"
+                                            >
+                                                <Button>
+                                                    <HelpOutlineOutlinedIcon color="disabled" />
+                                                </Button>
+                                            </Tooltip>
+                                        </FormLabel>
+                                        {ratioWarning ? (
+                                            <Alert
+                                                variant="outlined"
+                                                severity="warning"
+                                            >
+                                                The loading ratio cannot be
+                                                smaller than {ratioBound[0]} in
+                                                terms of your inputs and current
+                                                GSI depth
+                                            </Alert>
+                                        ) : (
+                                            ''
+                                        )}
+                                        <RadioGroup
+                                            value={loadingRatio}
+                                            onChange={changeRatio}
+                                            row
+                                            aria-label="loading ratio"
+                                            name="row-radio-buttons-group"
+                                        >
+                                            <FormControlLabel
+                                                value={0.2}
+                                                control={<Radio />}
+                                                label="1:5"
+                                            />
+                                            <FormControlLabel
+                                                value={0.33}
+                                                control={<Radio />}
+                                                label="1:3"
+                                            />
+                                            <FormControlLabel
+                                                value={0.5}
+                                                control={<Radio />}
+                                                label="1:2"
+                                            />
+                                            <FormControlLabel
+                                                disabled
+                                                value={1}
+                                                control={<Radio />}
+                                                label="1:1"
+                                            />
+                                            <FormControlLabel
+                                                disabled
+                                                value={0}
+                                                control={<Radio />}
+                                                label="Direct Infiltration"
+                                            />
+                                        </RadioGroup>
+                                    </FormControl>
+                                ) : (
+                                    <FormControl component="fieldset">
+                                        <FormLabel component="legend">
+                                            Loading Ratio
+                                        </FormLabel>
+                                        {ratioWarning ? (
+                                            <Alert
+                                                variant="outlined"
+                                                severity="warning"
+                                            >
+                                                The loading ratio only can be
+                                                direct infiltration in terms of
+                                                your inputs and current GSI
+                                                depth
+                                            </Alert>
+                                        ) : (
+                                            ''
+                                        )}
+                                        <RadioGroup
+                                            value={loadingRatio}
+                                            onChange={changeRatio}
+                                            row
+                                            aria-label="loading ratio"
+                                            name="row-radio-buttons-group"
+                                        >
+                                            <FormControlLabel
+                                                disabled
+                                                value={0.2}
+                                                control={<Radio />}
+                                                label="1:5"
+                                            />
+                                            <FormControlLabel
+                                                disabled
+                                                value={0.33}
+                                                control={<Radio />}
+                                                label="1:3"
+                                            />
+                                            <FormControlLabel
+                                                disabled
+                                                value={0.5}
+                                                control={<Radio />}
+                                                label="1:2"
+                                            />
+                                            <FormControlLabel
+                                                value={1}
+                                                control={<Radio />}
+                                                label="1:1"
+                                            />
+                                            <FormControlLabel
+                                                value={2}
+                                                control={<Radio />}
+                                                label="Direct Infiltration"
+                                            />
+                                        </RadioGroup>
+                                    </FormControl>
+                                )}
+                            </Stack>
+                        ) : (
+                            ''
+                        )}
+                    </Grid>
                     {scenarios ? (
                         <ScenarioDataGrid
                             scenarios={scenarios}

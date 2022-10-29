@@ -120,6 +120,15 @@ const InputPanel = ({
                         <Box sx={{ width: 300, ml: 1 }}>
                             <Typography gutterBottom>
                                 Design Storm (inches)
+                                <Tooltip
+                                    title="Adjust the design storm within the range 0.1 inches to 5 inches
+                                "
+                                    placement="right"
+                                >
+                                    <Button>
+                                        <HelpOutlineOutlinedIcon color="disabled" />
+                                    </Button>
+                                </Tooltip>
                             </Typography>
                             {stormRecommend && feedbackScenarios ? (
                                 <Alert variant="outlined" severity="info">
@@ -188,7 +197,8 @@ const InputPanel = ({
                         <FormLabel component="legend">
                             Storm Duration
                             <Tooltip
-                                title="Option to choose a short storm duration (2 Hours) or a long storm duration (24 hours)
+                                title="	
+                                Choose a short storm duration (2 Hours) or a long storm duration (24 hours)
                                 "
                                 placement="right"
                             >
@@ -223,7 +233,7 @@ const InputPanel = ({
                         <FormLabel component="legend">
                             Soil Texture
                             <Tooltip
-                                title="Option to choose native soil texture (fine, mixed, coarse)"
+                                title="Choose native soil texture (fine, mixed, coarse)"
                                 placement="right"
                             >
                                 <Button>
@@ -261,7 +271,7 @@ const InputPanel = ({
                         <FormLabel component="legend">
                             Surface Type (GSI Type)
                             <Tooltip
-                                title="Option to choose two GSI Types, Bioretention and Permeable Pavement
+                                title="Choose between two GSI types, Bioretention or Permeable Pavement
                                 "
                                 placement="right"
                             >

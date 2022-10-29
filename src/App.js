@@ -47,8 +47,8 @@ function App(props) {
     const [surfaceType, setSurfaceType] = useState(null);
     const [stormRecommend, isStormRecommend] = useState(false);
     const [displayedGraphic, setDisplayedGraphic] = useState([
-        'Existing Site',
-        'Impermeable Hard Pavement',
+        'Surface',
+        'Subsurface',
     ]);
 
     //change the displayed lengend as the output change with planted or paved surface
@@ -56,13 +56,14 @@ function App(props) {
         if (scenarios) {
             const surface =
                 scenarios[0].surface === 'planted'
-                    ? 'GSI Type - Bioretention'
-                    : 'GSI Type - Permeable Pavement';
+                    ? 'Proposed GSI Type – Bioretention'
+                    : 'Proposed GSI Type – Permeable Pavement';
             setDisplayedGraphic(() => [
-                'Existing Site',
-                'Impermeable Hard Pavement',
+                'Surface',
+                'Subsurface',
+
                 `${surface}`,
-                'GSI Depth',
+                'Proposed GSI Depth',
             ]);
         }
     }, [scenarios]);
