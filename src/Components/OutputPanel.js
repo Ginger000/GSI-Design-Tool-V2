@@ -222,8 +222,8 @@ const OutputPanel = ({
                                     color={
                                         scenarios &&
                                         scenarios[0].surface === 'planted'
-                                            ? '#375623'
-                                            : '#3c8335'
+                                            ? '#3c8335'
+                                            : '#375623'
                                     }
                                     prevGSIRatios={prevLoadingRatios}
                                 />
@@ -476,8 +476,8 @@ const OutputPanel = ({
                 <TabPanel value={value} index={0}>
                     <p style={{ color: 'grey' }}>
                         {' '}
-                        * The specified performance standard is a 80% reduction
-                        in stormwater runoff
+                        *The specified performance standard is an 80% reduction
+                        in stormwater runoff.
                     </p>
                     <Grid item xs={12} md={12} lg={12}>
                         {scenarios ? (
@@ -525,7 +525,14 @@ const OutputPanel = ({
                                     <FormLabel component="legend">
                                         Depth (inches)
                                         <Tooltip
-                                            title="The thickness of the GSI surface design, specified to be either 12, 18, 24 or 30 inches"
+                                            title={
+                                                <Typography fontSize={15}>
+                                                    The thickness of the GSI
+                                                    surface design, specified to
+                                                    be either 12, 18, 24 or 30
+                                                    inches
+                                                </Typography>
+                                            }
                                             placement="right"
                                         >
                                             <Button>
@@ -581,7 +588,14 @@ const OutputPanel = ({
                                         <FormLabel component="legend">
                                             Loading Ratio
                                             <Tooltip
-                                                title="The ratio of GSI retrofit area to upstream impervious surface runoff area"
+                                                title={
+                                                    <Typography fontSize={15}>
+                                                        The ratio of GSI
+                                                        retrofit area to
+                                                        upstream impervious
+                                                        surface runoff area
+                                                    </Typography>
+                                                }
                                                 placement="right"
                                             >
                                                 <Button>

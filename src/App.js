@@ -131,7 +131,7 @@ function App(props) {
                             <MenuIcon />
                         </IconButton>
                         <Typography variant="h6" noWrap component={'span'}>
-                            GSI Design Tool
+                            Green Stormwater Infrastructure (GSI) Design Tool
                         </Typography>
                     </Toolbar>
                 </AppBar>

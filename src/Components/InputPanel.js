@@ -121,8 +121,12 @@ const InputPanel = ({
                             <Typography gutterBottom>
                                 Design Storm (inches)
                                 <Tooltip
-                                    title="Adjust the design storm within the range 0.1 inches to 5 inches
-                                "
+                                    title={
+                                        <Typography fontSize={15}>
+                                            Adjust the design storm within the
+                                            range 0.1 inches to 5 inches
+                                        </Typography>
+                                    }
                                     placement="right"
                                 >
                                     <Button>
@@ -197,9 +201,12 @@ const InputPanel = ({
                         <FormLabel component="legend">
                             Storm Duration
                             <Tooltip
-                                title="	
-                                Choose a short storm duration (2 Hours) or a long storm duration (24 hours)
-                                "
+                                title={
+                                    <Typography fontSize={15}>
+                                        Choose a short storm duration (2 Hours)
+                                        or a long storm duration (24 hours){' '}
+                                    </Typography>
+                                }
                                 placement="right"
                             >
                                 <Button>
@@ -233,7 +240,12 @@ const InputPanel = ({
                         <FormLabel component="legend">
                             Soil Texture
                             <Tooltip
-                                title="Choose native soil texture (fine, mixed, coarse)"
+                                title={
+                                    <Typography fontSize={15}>
+                                        Choose native soil texture (fine, mixed,
+                                        coarse)
+                                    </Typography>
+                                }
                                 placement="right"
                             >
                                 <Button>
@@ -271,8 +283,12 @@ const InputPanel = ({
                         <FormLabel component="legend">
                             Surface Type (GSI Type)
                             <Tooltip
-                                title="Choose between two GSI types, Bioretention or Permeable Pavement
-                                "
+                                title={
+                                    <Typography fontSize={15}>
+                                        Choose between two GSI types:
+                                        Bioretention or Permeable Pavement
+                                    </Typography>
+                                }
                                 placement="right"
                             >
                                 <Button>

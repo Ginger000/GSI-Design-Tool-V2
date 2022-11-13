@@ -34,6 +34,7 @@ const FeedbackScenariosDataGrid = ({ feedbackScenarios }) => {
             <h2 style={{ color: 'grey' }}>Table-2 Feedback Scenarios</h2>
             <div style={{ height: 400, width: '100%' }}>
                 <DataGrid
+                    disableSelectionOnClick
                     sx={{
                         fontSize: '1.1rem',
                         '& .super-app-theme--header': {

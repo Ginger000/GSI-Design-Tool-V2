@@ -13,7 +13,7 @@ const ScenarioDataGrid = ({
     changeTogether,
 }) => {
     const rows = scenarios;
-    let radioChecked = [rows[0].id];
+    // let radioChecked = [rows[0].id];
     const columns = [
         {
             field: 'radiobutton',
@@ -50,40 +50,40 @@ const ScenarioDataGrid = ({
         },
     ];
 
-    const [selectionModel, setSelectionModel] = useState(radioChecked);
-    radioChecked = selectionModel;
+    // const [selectionModel, setSelectionModel] = useState(radioChecked);
+    // radioChecked = selectionModel;
 
     // To reset intial radio button check when has new scenarios
     // useEffect(() => {
     //   setSelectionModel([scenarios[0].id])
     // }, [scenarios]);
 
-    useEffect(() => {
-        // setSelectionModel([scenarios[1].id])
-        if (scenarios.length && depth && loadingRatio) {
-            setSelectionModel([
-                scenarios.filter(
-                    (s) =>
-                        s['depth'] === depth &&
-                        s['loadingRatio'] === loadingRatio
-                )[0].id,
-            ]);
-        }
-    }, [depth, loadingRatio]);
+    // useEffect(() => {
+    //     // setSelectionModel([scenarios[1].id])
+    //     if (scenarios.length && depth && loadingRatio) {
+    //         setSelectionModel([
+    //             scenarios.filter(
+    //                 (s) =>
+    //                     s['depth'] === depth &&
+    //                     s['loadingRatio'] === loadingRatio
+    //             )[0].id,
+    //         ]);
+    //     }
+    // }, [depth, loadingRatio]);
 
-    let selectedRow;
-    if (rows) {
-        selectedRow = rows.filter((item) => {
-            return item.id === selectionModel[0];
-        });
-        // if(selectedRow.length){
-        //   changeTogether(selectedRow[0].loadingRatio, selectedRow[0].depth)
-        // }
-        // selectedRow[0] && setDepth(selectedRow[0].depth);
-        // selectedRow[0] && setLoadingRatio(selectedRow[0].loadingRatio);
+    // let selectedRow;
+    // if (rows) {
+    //     selectedRow = rows.filter((item) => {
+    //         return item.id === selectionModel[0];
+    //     });
+    //     // if(selectedRow.length){
+    //     //   changeTogether(selectedRow[0].loadingRatio, selectedRow[0].depth)
+    //     // }
+    //     // selectedRow[0] && setDepth(selectedRow[0].depth);
+    //     // selectedRow[0] && setLoadingRatio(selectedRow[0].loadingRatio);
 
-        console.log('selectedRow', selectedRow);
-    }
+    //     console.log('selectedRow', selectedRow);
+    // }
 
     return (
         <Typography component="div">
@@ -92,6 +92,7 @@ const ScenarioDataGrid = ({
 
             <>
                 <DataGrid
+                    disableSelectionOnClick
                     sx={{
                         fontSize: '1.1rem',
                         '& .super-app-theme--header': {
@@ -101,10 +102,10 @@ const ScenarioDataGrid = ({
                     rows={rows}
                     columns={columns}
                     autoHeight
-                    selectionModel={selectionModel}
-                    onSelectionModelChange={(newSelectionModel) => {
-                        setSelectionModel(newSelectionModel);
-                    }}
+                    // selectionModel={selectionModel}
+                    // onSelectionModelChange={(newSelectionModel) => {
+                    //     setSelectionModel(newSelectionModel);
+                    // }}
                 />
                 {/* <div style={{ marginTop: "40px" }}>
         {selectedRow.length ? `You have selected: ${selectedRow[0].loadingRatio} ${selectedRow[0].depth}` : " "}
