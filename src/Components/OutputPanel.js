@@ -26,6 +26,55 @@ import FeedbackScenariosDataGrid from './FeedbackScenariosDataGrid';
 import Tooltip from '@mui/material/Tooltip';
 import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
 import Legend from './Legend';
+import { styled } from '@mui/material/styles';
+
+const AntTabs = styled(Tabs)({
+    borderBottom: '1px solid #e8e8e8',
+    '& .MuiTabs-indicator': {
+        backgroundColor: '#1890ff',
+    },
+});
+
+const AntTab = styled((props) => <Tab disableRipple {...props} />)(
+    ({ theme }) => ({
+        textTransform: 'none',
+        minWidth: 0,
+
+        [theme.breakpoints.up('sm')]: {
+            minWidth: 1000,
+            width: 1000,
+            textAlign: 'left',
+            alignItems: 'self-start',
+            justifyContent: 'flex-start',
+        },
+        fontWeight: theme.typography.fontWeightRegular,
+        marginRight: theme.spacing(1),
+        color: 'rgba(0, 0, 0, 0.85)',
+        fontFamily: [
+            '-apple-system',
+            'BlinkMacSystemFont',
+            '"Segoe UI"',
+            'Roboto',
+            '"Helvetica Neue"',
+            'Arial',
+            'sans-serif',
+            '"Apple Color Emoji"',
+            '"Segoe UI Emoji"',
+            '"Segoe UI Symbol"',
+        ].join(','),
+        '&:hover': {
+            color: '#40a9ff',
+            opacity: 1,
+        },
+        '&.Mui-selected': {
+            color: '#1890ff',
+            fontWeight: theme.typography.fontWeightMedium,
+        },
+        '&.Mui-focusVisible': {
+            backgroundColor: '#d1eaff',
+        },
+    })
+);
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -465,20 +514,69 @@ const OutputPanel = ({
             <br />
             <Box sx={{ width: '100%' }}>
                 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                    <Tabs
+                    <AntTabs
+                        value={value}
+                        onChange={handleChange}
+                        aria-label="ant example"
+                    >
+                        <AntTab
+                            label={
+                                <div>
+                                    <Typography variant="h6" gutterBottom>
+                                        OUTPUT
+                                    </Typography>
+                                    <Typography variant="body2" gutterBottom>
+                                        GSI Design scenarios will appear here
+                                        after selecting design options and
+                                        clicking “GENERATE”.
+                                    </Typography>
+                                    {!loadingRatio && (
+                                        <Typography
+                                            variant="body2"
+                                            gutterBottom
+                                        >
+                                            Scenarios can be further refined by
+                                            selecting depth and loading ratio
+                                            options
+                                        </Typography>
+                                    )}
+                                    <Typography variant="body2" gutterBottom>
+                                        *The specified performance standard is
+                                        an 80% reduction in stormwater runoff.
+                                    </Typography>
+                                </div>
+                            }
+                        />
+                    </AntTabs>
+                    {/* <Tabs
                         value={value}
                         onChange={handleChange}
                         aria-label="basic tabs example"
                     >
-                        <Tab label="Output" {...a11yProps(0)} />
-                    </Tabs>
+                        <Tab
+                            // label={
+                            //     <div>
+                            //         <Typography variant="h6">OUTPUT</Typography>
+                            //         <br />
+                            //         <Typography variant="body2">
+                            //             GSI Design scenarios will appear here
+                            //             after selecting design options and
+                            //             clicking “GENERATE”.
+                            //         </Typography>
+                            //         <Typography variant="body2">
+                            //             Scenarios can be further refined by
+                            //             selecting depth and loading ratio
+                            //             options
+                            //         </Typography>
+                            //     </div>
+                            // }
+                            label="Hab"
+                            {...a11yProps(0)}
+                        />
+                    </Tabs> */}
                 </Box>
                 <TabPanel value={value} index={0}>
-                    <p style={{ color: 'grey' }}>
-                        {' '}
-                        *The specified performance standard is an 80% reduction
-                        in stormwater runoff.
-                    </p>
+                    <p style={{ color: 'grey' }}> </p>
                     <Grid item xs={12} md={12} lg={12}>
                         {scenarios ? (
                             <Stack>
@@ -656,6 +754,21 @@ const OutputPanel = ({
                                     <FormControl component="fieldset">
                                         <FormLabel component="legend">
                                             Loading Ratio
+                                            <Tooltip
+                                                title={
+                                                    <Typography fontSize={15}>
+                                                        The ratio of GSI
+                                                        retrofit area to
+                                                        upstream impervious
+                                                        surface runoff area
+                                                    </Typography>
+                                                }
+                                                placement="right"
+                                            >
+                                                <Button>
+                                                    <HelpOutlineOutlinedIcon color="disabled" />
+                                                </Button>
+                                            </Tooltip>
                                         </FormLabel>
                                         {ratioWarning ? (
                                             <Alert

@@ -15,18 +15,18 @@ const ScenarioDataGrid = ({
     const rows = scenarios;
     // let radioChecked = [rows[0].id];
     const columns = [
-        {
-            field: 'radiobutton',
-            headerName: '',
-            width: 100,
-            sortable: false,
-            // renderCell: (params) => (
-            //     <Radio
-            //         checked={radioChecked[0] === params.id}
-            //         value={params.id}
-            //     />
-            // ),
-        },
+        // {
+        //     field: 'radiobutton',
+        //     headerName: '',
+        //     width: 100,
+        //     sortable: false,
+        //     // renderCell: (params) => (
+        //     //     <Radio
+        //     //         checked={radioChecked[0] === params.id}
+        //     //         value={params.id}
+        //     //     />
+        //     // ),
+        // },
         // {
         //   field:"id",
         //   headerName:"ID"
@@ -36,10 +36,16 @@ const ScenarioDataGrid = ({
             headerName: 'Loading Ratio',
             width: 180,
             headerClassName: 'super-app-theme--header',
-            valueGetter: (params) =>
-                params.value === 2
-                    ? (params.value = 'Direct Infiltration')
-                    : params.value,
+            valueGetter: (params) => {
+                if (params.value === 2) return 'Direct Infiltration';
+                else if (params.value === 1) return '1:1';
+                else if (params.value === 0.5) return '1:2';
+                else if (params.value === 0.33) return '1:3';
+                else return '1:5';
+            },
+            // params.value === 2
+            //     ? (params.value = 'Direct Infiltration')
+            //     : params.value,
         },
         {
             field: 'depth',

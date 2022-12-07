@@ -113,12 +113,15 @@ const InputPanel = ({
         }
     };
     return (
-        <Box sx={{ display: 'flex', mt: 6, justifyContent: 'center' }}>
+        <Box sx={{ display: 'flex', mt: 3, justifyContent: 'center' }}>
             <form onSubmit={generateScenarios}>
-                <Stack spacing={2}>
+                <Typography variant="h6" noWrap component={'span'}>
+                    DESIGN INPUTS
+                </Typography>
+                <Stack spacing={2} sx={{ mt: 3 }}>
                     <FormControl component="fieldset">
-                        <Box sx={{ width: 300, ml: 1 }}>
-                            <Typography gutterBottom>
+                        <Box sx={{ width: 300 }}>
+                            <FormLabel component="legend">
                                 Design Storm (inches)
                                 <Tooltip
                                     title={
@@ -133,7 +136,7 @@ const InputPanel = ({
                                         <HelpOutlineOutlinedIcon color="disabled" />
                                     </Button>
                                 </Tooltip>
-                            </Typography>
+                            </FormLabel>
                             {stormRecommend && feedbackScenarios ? (
                                 <Alert variant="outlined" severity="info">
                                     You could adjust the design storm within the
@@ -167,6 +170,7 @@ const InputPanel = ({
                                 max={5}
                                 onChange={changeDesignStorm}
                                 value={designStorm}
+                                sx={{ ml: 1 }}
                             />
                         </Box>
                     </FormControl>

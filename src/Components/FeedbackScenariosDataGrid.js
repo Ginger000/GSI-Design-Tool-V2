@@ -4,13 +4,13 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
 const columns = [
-    { field: 'designStorm', headerName: 'Design Strom (inches)', width: 230 },
-    {
-        field: 'reliabtility',
-        headerName: 'Reliabtility',
-        width: 180,
-        valueGetter: () => 1,
-    },
+    { field: 'designStorm', headerName: 'Design Storm (inches)', width: 230 },
+    // {
+    //     field: 'reliabtility',
+    //     headerName: 'Reliability',
+    //     width: 180,
+    //     valueGetter: () => 1,
+    // },
     { field: 'depth', headerName: 'Depth', width: 130 },
     {
         field: 'loadingRatio',
@@ -23,7 +23,13 @@ const columns = [
     },
     { field: 'duration', headerName: 'Duration (hrs)', width: 180 },
     { field: 'soilType', headerName: 'Soil Type', width: 180 },
-    { field: 'surface', headerName: 'Surface Type', width: 180 },
+    {
+        field: 'surface',
+        headerName: 'Surface Type (GSI Type)',
+        width: 180,
+        valueGetter: (params) =>
+            params.value === 'planted' ? 'bioretention' : 'permeable pavement',
+    },
 ];
 
 const FeedbackScenariosDataGrid = ({ feedbackScenarios }) => {
@@ -32,6 +38,10 @@ const FeedbackScenariosDataGrid = ({ feedbackScenarios }) => {
         <>
             <br />
             <h2 style={{ color: 'grey' }}>Table-2 Feedback Scenarios</h2>
+            <Typography variants="body2">
+                *Reliability is set at 100% probability of reducing stormwater
+                runoff by the specified performance standard.
+            </Typography>
             <div style={{ height: 400, width: '100%' }}>
                 <DataGrid
                     disableSelectionOnClick
